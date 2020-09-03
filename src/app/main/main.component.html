@@ -1,0 +1,69 @@
+<div class="container">
+
+    <div class="row my-4">
+        <div class="col-12">
+            <h2>SpaceX Launch Programs</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2" id="filterBox">
+            <h3>Filter</h3>
+            <h4>Launch Year</h4>
+            <div class="row" id="filterContainer">               
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2006</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2007</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2008</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2009</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2010</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2011</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2012</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2013</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2014</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2015</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2016</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2017</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2018</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2019</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataYearWise($event.target.outerText)">2020</div></div>
+            </div>
+
+            <h4 class="mt-2">Successful Launch</h4>
+            <div class="row">               
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataSuccLaunch(true)">True</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataSuccLaunch(false)">False</div></div>
+            </div>
+
+            <h4 class="mt-2">Successful Landing</h4>
+            <div class="row">               
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataSuccLanding(true)">True</div></div>
+                <div class="col-6 mb-1"><div class="btn btn-success" (click)="getDataSuccLanding(false)">False</div></div>
+            </div>
+
+        </div>
+
+        
+        <div class="col-md-10">
+
+            <div class="row">
+                <div class="col-md-3 mb-4" *ngFor="let data of allData" id="dataList">
+                    <div class="bg-white p-3">                    
+                    <figure class="p-2"><img class="img-fluid" [src]="data.links.mission_patch_small"></figure>
+                    <div><strong>{{data.mission_name}} # {{data.flight_number}}</strong></div>
+                    <div><strong>Mission Ids :</strong> {{data.mission_id}}</div>
+                    <div><strong>Year :</strong> {{data.launch_year}}</div>
+                    <div><strong>Successful Launch :</strong> {{data.launch_success}}</div>
+                    <strong>Successful Launch :</strong> {{data.rocket.first_stage.cores[0].land_success}}<br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" *ngIf="allData==''">
+                    <div class="col-md-12 mb-4">
+                        Data Not Found
+                    </div>
+                </div>        
+
+        </div>
+    </div>
+</div>
